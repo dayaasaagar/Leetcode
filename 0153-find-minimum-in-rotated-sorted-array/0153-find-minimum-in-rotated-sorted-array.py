@@ -1,9 +1,14 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
 
-        hmap = {i:v for i,v in enumerate(nums)}
+        low =0
+        high = len(nums)-1
+        while low < high:
+            mid = (low+high)//2
 
-        min_value = min(hmap.values())
-
-        return min_value
+            if nums[mid]>nums[high]:
+                low = mid+1
+            else:
+                high = mid
+        return nums[low]
         
