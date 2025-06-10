@@ -1,14 +1,10 @@
 class Solution:
     def frequencySort(self, s: str) -> str:
-        countdic= Counter(s)
-
-        h =[(-count,character) for character,count in countdic.items()]
-        heapify(h)
+        counter = Counter(s)
         result=[]
-
-        while h:
-            count,character = heappop(h)
-            result.append(character*-count)
+        newarray = sorted(counter.items(), key= lambda x: -x[1])
+        for key,value in newarray:
+            result.append(key*value)
         
         return ''.join(result)
 
