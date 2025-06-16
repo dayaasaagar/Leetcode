@@ -6,14 +6,30 @@
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
 
-        result = []
 
-        current = head
-        if not head or not head.next:
-            return None
+        #find the middle
+        first= head
+        second = head
+        while second and second.next:
+            first = first.next
+            second = second.next.next
         
-        while current:
-            result.append(current.val)
-            current = current.next
+        prev = None
+        while first:
+            temp = first.next
+            first.next = prev
+            prev = first
+            first = temp
+        #now prev will be pointing to the starting of the second half
 
-        return True if result == result[::-1] else False
+        start= head
+        half = prev
+
+        while half:
+
+            if start.val!=half.val:
+                return False
+            
+            start= start.next
+            half= half.next
+        return True
