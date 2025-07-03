@@ -9,15 +9,16 @@ class Solution:
 
         if not headA or not headB:
             return None
-        
+        node1 = headA
+        node2 = headB
+        while node1!=node2:
+            if not node1:
+                node1 =headB
+            else:
+                node1 = node1.next
+            if not node2:
+                node2 = headA
+            else:
+                node2 = node2.next
 
-        currenta = headA
-        currentb = headB
-
-        while currenta!=currentb:
-
-            currenta = currenta.next if currenta else headB
-            currentb = currentb.next if currentb else headA
-            
-        return currenta
-        
+        return node1
