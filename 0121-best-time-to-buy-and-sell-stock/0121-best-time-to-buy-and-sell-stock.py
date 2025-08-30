@@ -6,10 +6,8 @@ class Solution:
 
         for price in prices:
 
-            if price<min_price:
-                min_price = price
-            else:
-                max_profit = max(max_profit,price-min_price)
+            min_price = min(price,min_price)
+            max_profit = max(max_profit,price-min_price)
 
         return max_profit
 
