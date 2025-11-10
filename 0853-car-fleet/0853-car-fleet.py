@@ -8,3 +8,5 @@ class Solution:
             if not stack or time > stack[-1]:
                 stack.append(time)
         return len(stack)
+
+        
