@@ -1,33 +1,50 @@
 class Solution {
     public int trap(int[] height) {
 
-        if (height.length == 0) return 0;
+        //logic: take min of the max left and max right 
+        //o(n) solution
+        // alternative: left max array, right max array and array for computing the min of each left max and right max. space complexity increases to big o n.
 
-        int left = 0;
-        int right = height.length - 1;
 
-        int lmax = 0;
-        int rmax = 0;
 
-        int res = 0;
 
-        while (left < right) {
+        //using two pointer technique
 
-            if (height[left] <= height[right]) {
-                if (height[left] >= lmax) {
-                    lmax = height[left];
-                } else {
-                    res += lmax - height[left];
+
+        int leftMax=0;
+        int rightMax=0;
+        int left=0;
+        int right = height.length-1;
+        int res=0;
+
+
+        while(left<right)
+        {
+            if(height[left]<height[right])
+            {
+                if(height[left]>=leftMax)
+                {
+                    leftMax=height[left];
+                }
+                else
+                {
+                    res+=leftMax-height[left];
                 }
                 left++;
-            } else {
-                if (height[right] >= rmax) {
-                    rmax = height[right];
-                } else {
-                    res += rmax - height[right];
+            }
+            else
+            {
+                if(height[right]>=rightMax)
+                {
+                    rightMax=height[right];
+                }
+                else
+                {
+                    res+=rightMax-height[right];
                 }
                 right--;
             }
+
         }
 
         return res;
